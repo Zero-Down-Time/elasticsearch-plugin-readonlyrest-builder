@@ -30,7 +30,7 @@ $(PACKAGE_FILE):
 
 upload: $(PACKAGE_FILE)
 	for bucket in $(S3_BUCKETS); do \
-	  aws s3 cp --acl public-read $(PACKAGE_FILE) s3://$$bucket/$(S3_PREFIX)/$(PACKAGE); \
+	  aws s3 cp --quiet --acl public-read $(PACKAGE_FILE) s3://$$bucket/$(S3_PREFIX)/$(PACKAGE); \
 	done
 
 clean_s3:
