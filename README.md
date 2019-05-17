@@ -6,5 +6,5 @@
 This repository hosts a build pipeline incl. support for Drone.io to build the ElasticSearch Plugin readonlyrest.
 
 See:
-- https://readonlyrest.com.
+- https://readonlyrest.com
 - https://github.com/sscarduzio/elasticsearch-readonlyrest-plugin
