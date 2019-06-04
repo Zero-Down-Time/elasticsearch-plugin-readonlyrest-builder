@@ -12,12 +12,12 @@ steps:
   image: openjdk:13-alpine
   commands:
   - which make || apk add make
-  - make build
+  - make build PLUGIN_ES=es66x ES_VERSION=6.8.0
 - name: build-7
   image: openjdk:13-alpine
   commands:
   - which make || apk add make
-  - make build PLUGIN_ES=es70x ES_VERSION=7.0.1
+  - make build PLUGIN_ES=es70x ES_VERSION=7.1.1
 
 - name: upload
   image: python:3.7-alpine

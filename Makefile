@@ -1,6 +1,6 @@
 PLUGIN_VERSION ?= 1.18.0
 PLUGIN_ES ?= es66x
-ES_VERSION ?= 6.7.1
+ES_VERSION ?= 6.8.0
 
 S3_BUCKETS ?= zero-downtime
 S3_PREFIX ?= logging/elasticsearch
