@@ -17,6 +17,7 @@ steps:
       from_secret: aws_secret_key
   commands:
   - which make || apk add make
+  - which git || apk add git
   - which pip || apk add --update python py-pip python-dev
   - which aws || pip install awscli
   - ./build_upload_all.sh
