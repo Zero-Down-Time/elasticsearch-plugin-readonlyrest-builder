@@ -1,6 +1,6 @@
-PLUGIN_VERSION ?= 1.18.0
+PLUGIN_VERSION ?= 1.18.5
 PLUGIN_ES ?= es66x
-ES_VERSION ?= 6.8.0
+ES_VERSION ?= 6.8.3
 
 S3_BUCKETS ?= zero-downtime
 S3_PREFIX ?= logging/elasticsearch
@@ -25,7 +25,7 @@ fetch:
 
 build: $(PACKAGE_FILE)
 
-$(PACKAGE_FILE):
+$(PACKAGE_FILE): fetch
 	cd elasticsearch-readonlyrest-plugin && ./gradlew --no-daemon --exclude-task test --stacktrace $(PLUGIN_ES):ror '-PesVersion=$(ES_VERSION)'
 
 upload: $(PACKAGE_FILE)

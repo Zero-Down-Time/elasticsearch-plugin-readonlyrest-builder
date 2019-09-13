@@ -8,19 +8,8 @@ steps:
   - which make || apk add make
   - make fetch
 
-- name: build
+- name: build_upload_all
   image: openjdk:13-alpine
-  commands:
-  - which make || apk add make
-  - make build PLUGIN_ES=es66x ES_VERSION=6.8.0
-- name: build-7
-  image: openjdk:13-alpine
-  commands:
-  - which make || apk add make
-  - make build PLUGIN_ES=es70x ES_VERSION=7.1.1
-
-- name: upload
-  image: python:3.7-alpine
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: aws_access_key
@@ -28,22 +17,6 @@ steps:
       from_secret: aws_secret_key
   commands:
   - which make || apk add make
+  - which pip || apk add --update python py-pip python-dev
   - which aws || pip install awscli
-  - make upload
-  when:
-    event:
-    - tag
-- name: upload-7
-  image: python:3.7-alpine
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: aws_access_key
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: aws_secret_key
-  commands:
-  - which make || apk add make
-  - which aws || pip install awscli
-  - make upload PLUGIN_ES=es70x ES_VERSION=7.0.1
-  when:
-    event:
-    - tag
+  - ./build_upload_all.sh
